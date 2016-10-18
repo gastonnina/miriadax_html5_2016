@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Miriadax - Firefox - Obligatorio Modulo 2</title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <style type="text/css">
+            #grad1 {
+                padding: 10px;
+                font-family: 'Roboto', sans-serif;
+    background: #3E59A8; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#1F9EE5, #3E59A8); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#1F9EE5, #3E59A8); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#1F9EE5, #3E59A8); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#1F9EE5, #3E59A8); /* Standard syntax (must be last) */
+}
+        </style>
+        <script type="text/javascript">
+            var d;
+            var meses = {
+                1: 'Enero',
+                2: 'Febrero',
+                3: 'Marzo',
+                4: 'Abril',
+                5: 'Mayo',
+                6: 'Junio',
+                7: 'Julio',
+                8: 'Agosto',
+                9: 'Septiembre',
+                10: 'Octubre',
+                11: 'Noviembre',
+                12: 'Diciembre'
+            };
+            function lectura() {
+                d = new Date();
+                var cad = "<span>Está leyendo esta noticia el: </span><br>";
+                cad += d.getDate() + " de " + meses[d.getMonth()] + " de " + d.getFullYear() + "<br>";
+
+                cad += (d.getHours() < 10) ? ("0" + d.getHours()) : (d.getHours());
+                cad += ":";
+                cad += (d.getMinutes() < 10) ? ("0" + d.getMinutes()) : (d.getMinutes());
+                cad += ":";
+                cad += (d.getSeconds() < 10) ? ("0" + d.getSeconds()) : (d.getSeconds());
+
+                document.getElementById('fecha_lectura').innerHTML = cad;
+            }
+
+
+            setInterval(function () {
+                lectura()
+            }, 1000);
+        </script>
+    </head>
+    <body>
+
+        <div id="fecha_lectura">
+
+        </div>
+        <h1>Página personal de Gaston Nina</h1>
+        <h2> Noticias y novedades sobre Mozilla</h2>
+        <h3> El ecosistema Firefox OS toma un fuerte impulso y se expande a través de nuevos dispositivos, mercados y categorías</h3>
+        <img src="foto3.jpg">
+        <p> <span style="font-size:12px;">
+                <font color="#3C2E3F">
+                <span style="line-height: 27.360000610351563px;">Noticia publicada el  21 de Febrero del 2015</span></font>
+
+            </span>
+        </p>
+        <hr/>
+            <iframe style="border-radius:20px; width: 500px;" src="https://www.youtube.com/embed/xbVnaKV5I-c"  allowfullscreen></iframe>
+        <div id="grad1" >
+            
+        <p> <span style="line-height: 1.4;">Firefox OS ha desbloqueado el ecosistema móvil y se está expandiendo rápidamente a través de una amplia gama de dispositivos y categorías de productos en Europa, América Latina y Asia-Pacífico. Apenas un año después de que se lanzaran los primeros dispositivos, Firefox OS está ahora disponible en siete smartphones que ofrecen los cinco principales operadores en 15 países, mostrando fuertes signos de impulso de ecosistemas y la adopción generalizada de la industria.</span></p>
+
+        <span style="font-size:11px;color:#000">
+            <strong>Nuevos socios, mercados y oportunidades</strong>
+        </span>
+        <p> <span style="line-height: 1.4;"> Firefox OS aprovecha la Web como plataforma para permitir la flexibilidad, la escalabilidad y la personalización de gran alcance, siendo libre de límites y restricciones asociadas con los sistemas operativos móviles de propiedad. El éxito y el crecimiento de la plataforma han animado a los operadores globales y regionales a seguir apostando por Firefox OS en sus mercados.</span></p>
+        <p> <span style="line-height: 1.4;"> “Firefox OS ha surgido fruto de ‘otra’ categoría como una de las plataformas principales para la industria global de los smartphones”, indica Neil Mawston, Director Ejecutivo, Global Wireless Practice (GWP) de Strategy Analytics. “El fuerte interés de las grandes operadoras y fabricantes de hardware ha permitido a Firefox OS avanzar en regiones clave y desafiar a los actores de software ya establecidos”.</span></p>
+        <i id="by">@gastonnina</i>
+        </div>
+             <picture>
+          <source  srcset="rwd-4_450_736_81.jpg 1x, rwd-4_1362_2227_81.jpg 2x" media="(max-width: 450px)">
+          <source  srcset="rwd-3_960_690_81.jpg 1x, rwd-3_1500_1078_81.jpg 2x" media="(max-width: 960px)">
+          <source  srcset="rwd-2_1400_761_81.jpg 1x, rwd-2_2049_1114_81.jpg 2x" media="(max-width: 1400px)">
+          <source  srcset="rwd-1_2577_1165_81.jpg 1x, rwd-1_2577_1165_81.jpg 2x" >
+
+          <img src="rwd-4_450_736_81.jpg" srcset="rwd-4_450_736_81.jpg" alt="" itemprop="contentUrl">
+
+      </picture>
+    </body>
+</html>

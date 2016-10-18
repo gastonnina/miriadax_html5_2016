@@ -1,0 +1,52 @@
+/*
+* Author: Gaston Nina - @gastonnina
+*/
+html{
+
+}
+body{
+    padding-top: 210px;
+    /*color de fondo*/
+    background-color: #1F9EE5;
+    /*color de texto*/
+    color: #ddd;
+    /*centrar texto*/
+    text-align: center;
+    /*imagen de fondo*/
+    background-image: url("foto2.png"); 
+    background-repeat: no-repeat;
+    background-position: left top;	
+}
+h1{
+
+    font-size: 3em;
+    font-family: Comic;
+}
+h2{color: #F59B3A;}
+h3{color: #145B9B;}
+blockquote{
+    margin-top: 160px;
+    padding-left: 20%;
+    font-size: 2em;
+    font-style: italic;
+    color: #FBAD48;
+}
+img{
+    border-radius: 20px;
+}
+hr {
+    border:1px solid #fff;
+    opacity: 0.5;
+}
+div#fecha_lectura{
+    background-color: #fff;
+    color: #461918;
+    opacity: 0.3;
+    margin-top: -20px;
+    margin-left: -50%;
+}
+#by{
+    position: absolute;
+    right: 0;
+    top:0;
+}
