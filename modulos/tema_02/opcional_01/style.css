@@ -1,0 +1,72 @@
+/* 
+    Created on : Oct 18, 2016
+    Author     : Gaston Nina <gastonnina@gmail.com>
+*/
+body{
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.35)), color-stop(100%,rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.35) 0%,rgba(0,0,0,0) 100%);
+    background: -o-linear-gradient(top,  rgba(0,0,0,0.35) 0%,rgba(0,0,0,0) 100%);
+    background: -ms-linear-gradient(top,  rgba(0,0,0,0.35) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.35) 0%,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+    background-repeat: none;
+}
+h1{
+    float: left;
+    font-size: 3em;
+    margin: 0;
+    width: 50%;
+    text-align: center;
+    color: #fff;
+    
+text-shadow: 6px 5px 5px #888888;
+}
+article {
+	min-height: 600px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 18px;
+	margin-left: 20;
+	display: block;
+	padding-left: 20px;
+}
+article p{
+    width: 50%;
+    float: left;
+    text-align: center;
+    font-size: 1.5em;
+}
+@font-face {
+    font-family: 'firefox';
+    src: url('FiraSansOT-LightItalic.otf');
+
+
+}
+
+.fuente_firefox{
+    font-family: firefox;
+    
+}
+.fuente_android{
+    font-family: 'Roboto', sans-serif;
+}
+.imagen{
+	width: 300px;
+	padding-left: 10px;
+	text-align: center;
+        
+}
+.imagen img{
+    border-radius: 10px;
+}
+
+.left { 
+    float: left; 
+}
+.right { 
+    float: right; 
+}
+.clear { 
+    clear: both; 
+}
