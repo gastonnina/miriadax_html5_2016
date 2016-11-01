@@ -78,56 +78,39 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
     /**
      * Ojeto que almacena la caja de texto
      */
-    this.num = document.getElementById(id_caja);
+    this.num = $('#' + id_caja);
     /**
-     * objeto boton clear
+     * Declaracion de botones
      */
-    this.btnClear = document.getElementById(id_btn_clear);
-    /**
-     * Objetos de botones numericos
-     */
-    this.btnsNumber = document.getElementsByClassName("num");
+    this.btns = {
+        /**
+         * objeto boton clear
+         */
+        clear: {'btn': $('#' + id_btn_clear), 'action': 'clear'},
+        calcular: {'btn': $('#btn_eq'), 'action': 'calcular'},
+        numericos: $('.num'),
+        unarios: [
+            {'btn': $('#btn_cuadrado'), action: 'cuadrado'},
+            {'btn': $('#btn_inverso'), action: 'inverso'},
+            {'btn': $('#btn_raiz'), action: 'raizCuadrada'},
+            {'btn': $('#btn_entera'), action: 'parteEntera'},
+            {'btn': $('#btn_potencia'), action: 'potencia'},
+//            {'btn':$('#btn_factorial'),action:'factorial'},
+        ],
+        binarios: [
+            {'btn': $('#btn_suma'), action: 'sumar'},
+            {'btn': $('#btn_resta'), action: 'restar'},
+            {'btn': $('#btn_multiplica'), action: 'multiplicar'},
+            {'btn': $('#btn_divide'), action: 'dividir'},
+            {'btn': $('#btn_elevar'), action: 'elevar'},
+        ],
+        operandos: [
+//            {'btn':$('#btn_sumatirio'),action:'sumatorio'},
+//            {'btn':$('#btn_producto'),action:'producto'},
+        ]
 
-    /**
-     * Objeto boton suma
-     */
-    this.btnSuma = document.getElementById('btn_suma');
-    /**
-     * Objeto boton resta
-     */
-    this.btnResta = document.getElementById('btn_resta');
-    /**
-     * Objeto boton multiplica
-     */
-    this.btnMultiplica = document.getElementById('btn_multiplica');
-    /**
-     * Objeto boton divide
-     */
-    this.btnDivide = document.getElementById('btn_divide');
-    /**
-     * Objeto boton inverso
-     */
-    this.btnInverso = document.getElementById('btn_inverso');
-    /**
-     * Objeto boton cuadrado
-     */
-    this.btnCuadrado = document.getElementById('btn_cuadrado');
-    /**
-     * Objeto boton raiz
-     */
-    this.btnRaiz = document.getElementById('btn_raiz');
-    /**
-     * Objeto boton elevr
-     */
-    this.btnElevar = document.getElementById('btn_elevar');
-    /**
-     * Objeto boton parte entera
-     */
-    this.btnEntera = document.getElementById('btn_entera');
-    /**
-     * Objeto boton calcular o Igual
-     */
-    this.btnCalcular = document.getElementById('btn_eq');
+    }
+
 
     /**
      * Variable para los operadores
@@ -141,7 +124,7 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
      * Funcion que ayuda en el limpiado de caja
      */
     this.clear = function () {
-        this.num.value = '';
+        this.num.val('');
     }
     /**
      * Funcion para refactorizar operaciones basicas
@@ -149,10 +132,10 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
      * @param {Mixed} valor, valor calculado o vacio
      */
     this.operacion = function (op, valor) {
-        this.acc = this.num.value;
+        this.acc = this.num.val();
         this.op = op;
         this.num.focus();
-        this.num.value = valor;
+        this.num.val(valor);
     }
     this.sumar = function () {
         this.operacion('+', '');
@@ -167,23 +150,26 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
         this.operacion('/', '');
     }
     this.cuadrado = function () {
-        this.operacion('2', (Math.pow(+this.num.value, 2)));
+        this.operacion('2', (Math.pow(+this.num.val(), 2)));
     }
     this.elevar = function () {
         this.operacion('^', '');
     }
     this.raizCuadrada = function () {
-        this.operacion('√', (Math.sqrt(this.num.value)));
+        this.operacion('√', (Math.sqrt(this.num.val())));
     }
     this.inverso = function () {
-        this.operacion('#', (1 / this.num.value));
+        this.operacion('#', (1 / this.num.val()));
     }
     this.parteEntera = function () {
-        if (this.num.value > 0) {
-            this.num.value = Math.floor(this.num.value);
+        if (this.num.val() > 0) {
+            this.num.val(Math.floor(this.num.val()));
         } else {
-            this.num.value = -Math.ceil(this.num.value);
+            this.num.val(-Math.ceil(this.num.val()));
         }
+    }
+    this.potencia = function () {
+        this.operacion('2', (Math.pow(2, +this.num.val())));
     }
     /**
      * Funcion que realiza las opraciones de caluladora
@@ -192,28 +178,31 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
     this.calcular = function () {
         switch (this.op) {
             case "+":
-                return (+this.acc + +this.num.value);
+                return (+this.acc + +this.num.val());
                 break;
             case "-":
-                return (+this.acc - +this.num.value);
+                return (+this.acc - +this.num.val());
                 break;
             case "*":
-                return  (+this.acc * +this.num.value);
+                return  (+this.acc * +this.num.val());
                 break;
             case "/":
-                return (+this.acc / +this.num.value)
+                return (+this.acc / +this.num.val())
                 break;
             case "2":
-                return  (Math.pow(+this.num.value, 2))
+                return  (Math.pow(+this.num.val(), 2))
                 break;
             case "^":
-                return  (Math.pow(+this.acc, +this.num.value))
+                return  (Math.pow(+this.acc, +this.num.val()))
                 break;
             case "√":
-                return  Math.sqrt(this.num.value);
+                return  Math.sqrt(this.num.val());
                 break;
             case "#":
-                return 1 / this.num.value;
+                return 1 / this.num.val();
+                break;
+            case "p":
+                return  (Math.pow(2, +this.num.val()))
                 break;
         }
     }
@@ -227,56 +216,60 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
         /**
          * Agregamos evento click al boton clear
          */
-        this.btnClear.addEventListener('click', function () {
-            that.clear();
-        }, false);
+        this.btns.clear.btn.click(function () {
+            that[that.btns.clear.action]();
+        });
+
         that.clear();//Limpia primera vez
-
-        this.btnSuma.addEventListener('click', function () {
-            that.sumar();
-        }, false);
-        this.btnResta.addEventListener('click', function () {
-            that.restar();
-        }, false);
-        this.btnMultiplica.addEventListener('click', function () {
-            that.multiplicar();
-        }, false);
-        this.btnDivide.addEventListener('click', function () {
-            that.dividir();
-        }, false);
-        this.btnInverso.addEventListener('click', function () {
-            that.inverso();
-        }, false);
-        this.btnCuadrado.addEventListener('click', function () {
-            that.cuadrado();
-        }, false);
-        this.btnRaiz.addEventListener('click', function () {
-            that.raizCuadrada();
-        }, false);
-        this.btnElevar.addEventListener('click', function () {
-            that.elevar();
-        }, false);
-        this.btnEntera.addEventListener('click', function () {
-            that.parteEntera();
-        }, false);
-        this.btnCalcular.addEventListener('click', function () {
-            that.num.value = that.calcular();
-        }, false);
-
-        for (var i = 0; i < this.btnsNumber.length; i++) {
-            this.btnsNumber[i].addEventListener('click', function () {
-                /**
-                 * Inserta el valor del boton a caja
-                 */
-                that.num.value += this.innerHTML;
-                that.num.focus();
-            }, false);
+        /**
+         * Agregamos los valores de numeros
+         */
+        for (var i = 0; i < this.btns.numericos.length; i++) {
+            $(this.btns.numericos[i]).click(function () {
+                that.num.val(that.num.val() + this.innerHTML)
+            });
         }
+        /**
+         * Unarios
+         */
+        for (var i = 0; i < this.btns.unarios.length; i++) {
+            /**
+             * i es pasado como parametro
+             */
+            this.btns.unarios[i].btn.click(i, function (event) {
+                /**
+                 * Event.data recoge el parametro
+                 */
+                that[that.btns.unarios[event.data].action]();
+            });
+        }
+        /**
+         * Binarios
+         */
+        for (var i = 0; i < this.btns.binarios.length; i++) {
+            /**
+             * i es pasado como parametro
+             */
+            this.btns.binarios[i].btn.click(i, function (event) {
+                /**
+                 * Event.data recoge el parametro
+                 */
+                that[that.btns.binarios[event.data].action]();
+            });
+        }
+
+        this.btns.calcular.btn.click(function () {
+            that.num.val(that[that.btns.calcular.action]());
+        });
+
+
     };
     /**
      * Invocamos a this
      */
     this.init();
 };
-
-var calculadora = new CalculadoraClass('caja', 'btn_del');
+var calculadora;
+$(function () {
+    calculadora = new CalculadoraClass('caja', 'btn_del');
+});

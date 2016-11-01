@@ -96,12 +96,14 @@ button:hover{
 .col1 button{
     background-color:  #6EA435;
 }
-input#caja{
+.col3 button{
+    background-color:  #aaa;
+}
+#caja{
     border: 1px solid #aaa;
     border-radius: 15px;
-    
-    height: 80px;
-    font-size: 2em; 
+    height: 160px;
+    font-size: 3em; 
     text-align: right;
     padding-right: 15px;
         

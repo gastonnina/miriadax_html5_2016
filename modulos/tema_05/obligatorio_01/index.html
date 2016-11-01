@@ -16,11 +16,15 @@
         
         <table>
             <tr>
-                <td colspan="3">
-                    <input id="caja" />
+                <td colspan="3" rowspan="2">
+                    <textarea id="caja" cols="25" rows="5"></textarea>
                 </td>
                 <th class="col1"><button id="btn_del">C</button></th>
                 <th class="col2"><button id="btn_cuadrado">X<sup>2</sup></button></th>
+            </tr>
+            <tr>
+                <th class="col1"><button class="btn_basic" id="btn_suma">+</button></th>                
+                <th class="col2"><button id="btn_inverso">1/X</button></th>
             </tr>
             <tr>
                 <td>
@@ -32,7 +36,7 @@
                 <td>
                     <button class="num">9</button>
                 </td>
-                <th class="col1"><button class="btn_basic" id="btn_suma">+</button></th>                
+                <th class="col1"><button class="btn_basic" id="btn_resta">-</button></th>
                 <th class="col2"><button id="btn_raiz">√<sup>2</sup></button></th>
             </tr>
             <tr>
@@ -45,8 +49,8 @@
                 <td>
                     <button class="num">6</button>
                 </td>
-                <th class="col1"><button class="btn_basic" id="btn_resta">-</button></th>
-                <th class="col2"><button id="btn_inverso">1/X</button></th>
+                <th class="col1"><button class="btn_basic" id="btn_multiplica">*</button></th>
+                <th class="col2"><button id="btn_entera">[x]</button></th>
             </tr>
             <tr>
                 <td>
@@ -58,8 +62,8 @@
                 <td>
                     <button class="num">3</button>
                 </td>
-                <th class="col1"><button class="btn_basic" id="btn_multiplica">*</button></th>
-                <th class="col2"><button id="btn_elevar">X<sup>y</sup></button></th>
+                <th class="col1"><button class="btn_basic" id="btn_divide">/</button></th>
+                <th class="col2"><button id="btn_potencia">2<sup>n</sup></button></th>
             </tr>
             <tr>
                 <td>
@@ -69,13 +73,22 @@
                     <button class="num">0</button>
                 </td>
                 <td>
+                    <button class="num">,</button>
+                </td>
+                
+                <th class="col1"><button id="btn_elevar">X<sup>y</sup></button></th>
+                <th class="col2"><button id="btn_factorial">n!</button></th>
+            </tr>
+            <tr>
+                <td colspan="3">
                     <button id="btn_eq">=</button>
                 </td>
-                <th class="col1"><button class="btn_basic" id="btn_divide">/</button></th>
-                <th class="col2"><button id="btn_entera">[x]</button></th>
+                <th class="col3"><button id="btn_sumatorio">&sum;</button></th>
+                <th class="col3"><button id="btn_producto">&prod;</button></th>
             </tr>
         </table>
         
+        <script type="text/javascript" src="jquery.min.js"></script>
         <script type="text/javascript" src="functions.js"></script>
     </body>
 </html>
