@@ -95,7 +95,7 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
             {'btn': $('#btn_raiz'), action: 'raizCuadrada'},
             {'btn': $('#btn_entera'), action: 'parteEntera'},
             {'btn': $('#btn_potencia'), action: 'potencia'},
-//            {'btn':$('#btn_factorial'),action:'factorial'},
+            {'btn':$('#btn_factorial'),action:'factorial'},
         ],
         binarios: [
             {'btn': $('#btn_suma'), action: 'sumar'},
@@ -105,8 +105,8 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
             {'btn': $('#btn_elevar'), action: 'elevar'},
         ],
         operandos: [
-//            {'btn':$('#btn_sumatirio'),action:'sumatorio'},
-//            {'btn':$('#btn_producto'),action:'producto'},
+            {'btn':$('#btn_sumatorio'),action:'sumatorio'},
+            {'btn':$('#btn_producto'),action:'producto'},
         ]
 
     }
@@ -171,6 +171,27 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
     this.potencia = function () {
         this.operacion('2', (Math.pow(2, +this.num.val())));
     }
+    this.factorial = function () {
+        var n = this.num.val();
+        for (var res = 1; n !== 0; n--){
+         res = res * n;   
+        }
+        this.operacion('f', res);
+    }
+    this.sumatorio = function () {
+        var lista = this.num.val().split(",");
+        for (var i = 0, acc = 0; i < lista.length; i++) { 
+              acc += +lista[i]; 
+        }
+        this.num.val(acc);
+    }
+    this.producto = function () {
+        var lista = this.num.val().split(",");
+        for (var i = 0, acc = 1; i < lista.length; i++) { 
+            acc = acc * +lista[i]; 
+        }
+        this.num.val(acc);
+    }
     /**
      * Funcion que realiza las opraciones de caluladora
      * @returns {Number}
@@ -203,6 +224,13 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
                 break;
             case "p":
                 return  (Math.pow(2, +this.num.val()))
+                break;
+            case "f":
+                var n = this.num.val();
+                for (var res = 1; n !== 0; n--) {
+                    res = res * n;
+                }
+                return  res;
                 break;
         }
     }
@@ -255,6 +283,20 @@ var CalculadoraClass = function (id_caja, id_btn_clear) {
                  * Event.data recoge el parametro
                  */
                 that[that.btns.binarios[event.data].action]();
+            });
+        }
+        /**
+         * Operandos
+         */
+        for (var i = 0; i < this.btns.operandos.length; i++) {
+            /**
+             * i es pasado como parametro
+             */
+            this.btns.operandos[i].btn.click(i, function (event) {
+                /**
+                 * Event.data recoge el parametro
+                 */
+                that[that.btns.operandos[event.data].action]();
             });
         }
 
